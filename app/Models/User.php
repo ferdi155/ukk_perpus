@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models;
+use App\Models\Ulasan;
+use App\Models\Pinjam;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -41,4 +43,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function pinjams()
+    {
+        return $this->hasMay(Pinjam::class);
+    }
+
+    public function ulasans()
+    {
+        return $this->hasMany(Ulasan::class);
+    }
 }
